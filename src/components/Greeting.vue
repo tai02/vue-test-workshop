@@ -11,7 +11,7 @@ export default {
   data() {
     return {
       greeting: "Vue and TDD"
-    }
+    };
   }
-}
+};
 </script>
