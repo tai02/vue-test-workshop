@@ -4,6 +4,6 @@ import Greeting from "@/components/Greeting.vue";
 describe("Greeting.vue", () => {
   it("renders a greeting", () => {
     const wrapper = mount(Greeting);
-    expect(wrapper.text()).toBe("Vue and TDD");
+    expect(wrapper.text()).toMatch("Vue and TDD");
   });
 });
