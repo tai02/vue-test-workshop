@@ -1,20 +1,32 @@
-import { mount } from "@vue/test-utils";
+import { shallowMount } from "@vue/test-utils";
 import SubmitButton from "@/components/SubmitButton";
 
+const msg = "submit";
+const factory = propsData => {
+  return shallowMount(SubmitButton, {
+    propsData: {
+      msg,
+      ...propsData
+    }
+  });
+};
+
 describe("SubmitButton.vue", () => {
-  it("displays a non authorized message", () => {
-    const msg = "submit";
-    const isAdmin = true;
-    const wrapper = mount(SubmitButton, {
-      propsData: {
-        msg,
-        isAdmin
-      }
+  describe("does not have admin privileges", () => {
+    it("renders a message", () => {
+      const wrapper = factory();
+
+      expect(wrapper.find("span").text()).toBe("Not Authorized");
+      expect(wrapper.find("button").text()).toBe("submit");
     });
+  });
 
-    console.log(wrapper.html());
+  describe("has admin privileges", () => {
+    it("render a message", () => {
+      const wrapper = factory({ isAdmin: true });
 
-    expect(wrapper.find("span").text()).toBe("Admin Privileges");
-    expect(wrapper.find("button").text()).toBe("submit");
+      expect(wrapper.find("span").text()).toBe("Admin Privileges");
+      expect(wrapper.find("button").text()).toBe("submit");
+    });
   });
 });
