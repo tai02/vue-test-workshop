@@ -30,6 +30,7 @@ export default {
       return this.$http
         .get("/api/v1/register", { username: this.username })
         .then(() => {
+          this.submitted = true;
           // show success message, etc
         })
         .catch(() => {
