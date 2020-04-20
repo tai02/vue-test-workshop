@@ -11,4 +11,18 @@ describe("NumberRenderer", () => {
 
     expect(wrapper.text()).toBe("2, 4, 6, 8");
   });
+
+  it("renders odd numbers", () => {
+    const localThis = { even: false };
+
+    expect(NumberRenderer.computed.numbers.call(localThis)).toBe(
+      "1, 3, 5, 7, 9"
+    );
+  });
+
+  it("renders odd numbers", () => {
+    const localThis = { even: false };
+
+    expect(NumberRenderer.computed.numbers()).toBe("1, 3, 5, 7, 9");
+  });
 });
