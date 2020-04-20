@@ -19,10 +19,4 @@ describe("NumberRenderer", () => {
       "1, 3, 5, 7, 9"
     );
   });
-
-  it("renders odd numbers", () => {
-    const localThis = { even: false };
-
-    expect(NumberRenderer.computed.numbers()).toBe("1, 3, 5, 7, 9");
-  });
 });
