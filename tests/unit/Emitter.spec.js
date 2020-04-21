@@ -6,7 +6,11 @@ describe("Emitter", () => {
     const wrapper = mount(Emitter);
 
     wrapper.vm.emitEvent();
+    wrapper.vm.emitEvent();
 
     console.log(wrapper.emitted());
+    console.log(wrapper.emitted().myEvent);
+    console.log(wrapper.emitted().myEvent[0]);
+    console.log(wrapper.emitted().myEvent[0][0]);
   });
 });
