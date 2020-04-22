@@ -7,8 +7,8 @@ export default {
   name: "Emitter",
 
   methods: {
-    emitEvent() {
-      this.$emit("myEvent", "name", "password");
+    emitEvent(str) {
+      this.$emit("myEvent", "name", "password", str);
     }
   }
 };

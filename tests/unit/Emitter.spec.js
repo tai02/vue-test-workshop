@@ -5,9 +5,9 @@ describe("Emitter", () => {
   it("emits an event with two arguments", () => {
     const wrapper = mount(Emitter);
 
-    wrapper.vm.emitEvent();
+    wrapper.vm.emitEvent("test");
 
-    expect(wrapper.emitted().myEvent[0]).toEqual(["name", "password"]);
+    expect(wrapper.emitted().myEvent[0]).toEqual(["name", "password", "test"]);
   });
 
   it("emits an event without mounting the component", () => {
@@ -16,8 +16,8 @@ describe("Emitter", () => {
       events[event] = [...args];
     };
 
-    Emitter.methods.emitEvent.call({ $emit });
+    Emitter.methods.emitEvent.call({ $emit }, "test");
 
-    expect(events.myEvent).toEqual(["name", "password"]);
+    expect(events.myEvent).toEqual(["name", "password", "test"]);
   });
 });
