@@ -10,7 +10,7 @@ describe("Bilingual", () => {
     });
     const wrapper1 = mount(Bilingual);
 
-    console.log(wrapper0.html());
-    console.log(wrapper1.html());
+    // console.log(wrapper0.html());
+    // console.log(wrapper1.html());
   });
 });
