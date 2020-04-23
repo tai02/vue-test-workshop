@@ -20,4 +20,11 @@ describe("ParentWithAPICallChild.vue", () => {
     expect(wrapper0.find(ComponentWithAsyncCall).exists()).toBe(true);
     expect(wrapper1.find(ComponentWithAsyncCall).exists()).toBe(true);
   });
+
+  it("renders with shallowMount and does not initialize API call", () => {
+    const wrapper = shallowMount(ParentWithAPICallChild);
+
+    // console.log(wrapper.html());
+    expect(wrapper.find(ComponentWithAsyncCall).exists()).toBe(true);
+  });
 });
