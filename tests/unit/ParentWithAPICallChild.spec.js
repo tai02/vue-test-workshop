@@ -3,7 +3,7 @@ import ParentWithAPICallChild from "@/components/ParentWithAPICallChild.vue";
 import ComponentWithAsyncCall from "@/components/ComponentWithAsyncCall.vue";
 
 describe("ParentWithAPICallChild.vue", () => {
-  it("renders with mount and does initialize API call", () => {
+  it("renders with mount and does not initialize API call", () => {
     const wrapper0 = mount(ParentWithAPICallChild, {
       stubs: {
         ComponentWithAsyncCall: true
