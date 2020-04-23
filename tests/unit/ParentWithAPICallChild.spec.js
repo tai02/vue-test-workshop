@@ -4,8 +4,20 @@ import ComponentWithAsyncCall from "@/components/ComponentWithAsyncCall.vue";
 
 describe("ParentWithAPICallChild.vue", () => {
   it("renders with mount and does initialize API call", () => {
-    const wrapper = mount(ParentWithAPICallChild);
+    const wrapper0 = mount(ParentWithAPICallChild, {
+      stubs: {
+        ComponentWithAsyncCall: true
+      }
+    });
+    const wrapper1 = mount(ParentWithAPICallChild, {
+      stubs: {
+        ComponentWithAsyncCall: "<div class='stub'></div>"
+      }
+    });
 
-    expect(wrapper.find(ComponentWithAsyncCall).exists()).toBe(true);
+    // console.log(wrapper0.html());
+    // console.log(wrapper1.html());
+    expect(wrapper0.find(ComponentWithAsyncCall).exists()).toBe(true);
+    expect(wrapper1.find(ComponentWithAsyncCall).exists()).toBe(true);
   });
 });
