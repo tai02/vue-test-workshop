@@ -3,7 +3,7 @@
 </template>
 
 <script>
-import axios from "axios";
+// import axios from "axios";
 
 export default {
   name: "ComponentWithAsyncCall",
@@ -13,9 +13,10 @@ export default {
   },
 
   methods: {
-    async makeApiCall() {
+    // async makeApiCall() {
+    makeApiCall() {
       console.log("Making api call");
-      await axios.get("https://jsonplaceholder.typicode.com/posts/1");
+      // await axios.get("https://jsonplaceholder.typicode.com/posts/1");
     }
   }
 };
