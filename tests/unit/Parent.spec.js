@@ -1,6 +1,6 @@
 import { mount } from "@vue/test-utils";
 import Parent from "@/components/Parent.vue";
-import Child from "@/components/Child.vue";
+// import Child from "@/components/Child.vue";
 
 describe("Parent", () => {
   it("does not render a span", () => {
@@ -20,8 +20,12 @@ describe("Parent", () => {
   });
 
   it("does not render a Child component", () => {
-    const wrapper = mount(Parent);
+    const wrapper = mount(Parent, {
+      data() {
+        return { showChild: true };
+      }
+    });
 
-    expect(wrapper.find(Child).exists()).toBe(false);
+    expect(wrapper.find({ name: "Child" }).exists()).toBe(true);
   });
 });
