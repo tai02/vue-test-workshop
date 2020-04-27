@@ -12,7 +12,7 @@ describe("SET_POST", () => {
 
     expect(state).toEqual({
       postIds: [1],
-      posts: { "1": post }
+      posts: { "1": { id: 1, title: "Post" } }
     });
   });
 });
