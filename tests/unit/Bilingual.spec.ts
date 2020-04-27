@@ -5,7 +5,7 @@ describe("Bilingual", () => {
   it("renders successfully", () => {
     const wrapper0 = mount(Bilingual, {
       mocks: {
-        $t: msg => msg
+        $t: (msg: string) => msg
       }
     });
     const wrapper1 = mount(Bilingual);
