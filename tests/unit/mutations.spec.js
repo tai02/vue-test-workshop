@@ -1,4 +1,4 @@
-import mutations from "@/store/mutations.ts";
+import mutations from "@/store/mutations";
 
 describe("SET_POST", () => {
   it("adds a post to the state", () => {
