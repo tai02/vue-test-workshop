@@ -1,5 +1,18 @@
 import actions from "@/store/actions";
 
+let url = "";
+let body = {};
+
+jest.mock("axios", () => ({
+  post: (_url, _body) => {
+    return new Promise(resolve => {
+      url = _url;
+      body = _body;
+      resolve(true);
+    });
+  }
+}));
+
 describe("authenticate", () => {
   it("authenticated a user", async () => {
     const commit = jest.fn();
