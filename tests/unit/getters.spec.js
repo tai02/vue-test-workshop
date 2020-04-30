@@ -14,3 +14,12 @@ describe("poodles", () => {
     expect(actual).toEqual([dogs[0], dogs[2]]);
   });
 });
+
+describe("poodlesByAge", () => {
+  it("returns poodles by age", () => {
+    const poodles = [dogs[0], dogs[2]];
+    const actual = getters.poodlesByAge(state, { poodles })(1);
+
+    expect(actual).toEqual([dogs[0]]);
+  });
+});
