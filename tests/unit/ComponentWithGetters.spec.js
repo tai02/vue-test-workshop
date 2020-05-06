@@ -22,4 +22,18 @@ describe("ComponentWithGetters.vue", () => {
 
     expect(wrapper.find(".fullname").text()).toBe("Alice Doe");
   });
+
+  it("renders a username using computed mounting options", () => {
+    const wrapper = mount(ComponentWithGetters, {
+      mocks: {
+        $store: {
+          getters: {
+            fullname: "Alice Doe"
+          }
+        }
+      }
+    });
+
+    expect(wrapper.find(".fullname").text()).toBe("Alice Doe");
+  });
 });
