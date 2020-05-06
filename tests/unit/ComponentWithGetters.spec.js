@@ -36,4 +36,14 @@ describe("ComponentWithGetters.vue", () => {
 
     expect(wrapper.find(".fullname").text()).toBe("Alice Doe");
   });
+
+  it("renders a username using computed mounting options", () => {
+    const wrapper = mount(ComponentWithGetters, {
+      computed: {
+        fullname: () => "Alice Doe"
+      }
+    });
+
+    expect(wrapper.find(".fullname").text()).toBe("Alice Doe");
+  });
 });
