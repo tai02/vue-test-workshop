@@ -16,8 +16,10 @@ const store = new Vuex.Store({
   }
 });
 
-it("renders a username using a real Vuex getter", () => {
-  const wrapper = mount(ComponentWithGetters, { store, localVue });
+describe("ComponentWithGetters.vue", () => {
+  it("renders a username using a real Vuex getter", () => {
+    const wrapper = mount(ComponentWithGetters, { store, localVue });
 
-  expect(wrapper.find(".fullname").text()).toBe("Alice Doe");
+    expect(wrapper.find(".fullname").text()).toBe("Alice Doe");
+  });
 });
