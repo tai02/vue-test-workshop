@@ -42,4 +42,24 @@ describe("ComponentWithButtons", () => {
       msg: "Test Dispatch"
     });
   });
+
+  it("dispatch a namespaced action when button is clicked", async () => {
+    const store = new Vuex.Store();
+    store.dispatch = jest.fn();
+
+    const wrapper = mount(ComponentWithButtons, {
+      store,
+      localVue
+    });
+
+    wrapper.find(".namespaced-dispatch").trigger("click");
+    await wrapper.vm.$nextTick();
+
+    expect(store.dispatch).toHaveBeenCalledWith(
+      "namespaced/very/deeply/testAction",
+      {
+        msg: "Test Namespaced Dispatch"
+      }
+    );
+  });
 });
