@@ -20,4 +20,15 @@ describe("App", () => {
 
     expect(wrapper.find(NestedRoute).exists()).toBe(true);
   });
+
+  it("should have a different route that /nested-route", async () => {
+    const router = new VueRouter({ routes });
+    const wrapper = mount(App, {
+      localVue,
+      router
+    });
+    // This test will fail because we are still on the /nested-route
+    expect(wrapper.find(NestedRoute).exists()).toBe(false);
+    console.log(router.currentRoute);
+  });
 });
