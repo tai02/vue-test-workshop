@@ -9,7 +9,7 @@ localVue.use(VueRouter);
 
 describe("App", () => {
   it("renders a child component via routing", async () => {
-    const router = new VueRouter({ routes });
+    const router = new VueRouter({ routes, mode: "abstract" });
     const wrapper = mount(App, {
       localVue,
       router
@@ -22,7 +22,7 @@ describe("App", () => {
   });
 
   it("should have a different route that /nested-route", async () => {
-    const router = new VueRouter({ routes });
+    const router = new VueRouter({ routes, mode: "abstract" });
     const wrapper = mount(App, {
       localVue,
       router
