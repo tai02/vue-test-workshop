@@ -29,6 +29,6 @@ describe("App", () => {
     });
     // This test will fail because we are still on the /nested-route
     expect(wrapper.find(NestedRoute).exists()).toBe(false);
-    console.log(router.currentRoute);
+    // console.log(router.currentRoute);
   });
 });
