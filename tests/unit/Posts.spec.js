@@ -16,8 +16,13 @@ const createTestVue = () => {
   return { store, router, localVue };
 };
 
-const createWrapper = (component, options = {}) => {
-  const { localVue, store, router } = createTestVue();
+const createWrapper = (component, options = {}, storeState = {}) => {
+  const localVue = createLocalVue();
+  localVue.use(VueRouter);
+  localVue.use(Vuex);
+  const store = createStore(storeState);
+  const router = createRouter();
+
   return mount(component, {
     store,
     router,
@@ -37,10 +42,11 @@ describe("Posts.vue", () => {
   });
 
   it("renders posts", async () => {
-    const wrapper = createWrapper(Posts);
-
-    wrapper.vm.$store.commit("ADD_POSTS", [{ id: 1, title: "Post" }]);
-    await wrapper.vm.$nextTick();
+    const wrapper = createWrapper(
+      Posts,
+      {},
+      { posts: [{ id: 1, title: "Post" }] }
+    );
 
     expect(wrapper.findAll(".post").length).toBe(1);
   });
