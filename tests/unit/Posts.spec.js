@@ -6,35 +6,33 @@ import Posts from "@/components/Posts.vue";
 import { createRouter } from "@/createRouter";
 import { createStore } from "@/createStore";
 
+const createTestVue = () => {
+  const localVue = createLocalVue();
+  localVue.use(VueRouter);
+  localVue.use(Vuex);
+
+  const store = createStore();
+  const router = createRouter();
+  return { store, router, localVue };
+};
+
 describe("Posts.vue", () => {
   it("renders a message if passed", () => {
-    const localVue = createLocalVue();
-    localVue.use(VueRouter);
-    localVue.use(Vuex);
-
-    const store = createStore();
-    const router = createRouter();
+    const { localVue, store, router } = createTestVue();
     const message = "New content coming soon!";
     const wrapper = mount(Posts, {
       propsData: { message },
       store,
-      router
+      router,
+      localVue
     });
 
     expect(wrapper.find("#message").text()).toBe("New content coming soon!");
   });
 
   it("renders posts", async () => {
-    const localVue = createLocalVue();
-    localVue.use(VueRouter);
-    localVue.use(Vuex);
-
-    const store = createStore();
-    const router = createRouter();
-    const message = "New content coming soon!";
-
+    const { store, router } = createTestVue();
     const wrapper = mount(Posts, {
-      propsData: { message },
       store,
       router
     });
